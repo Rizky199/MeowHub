@@ -1,0 +1,103 @@
+--// MEOWW HUB - CupPong Shooter GUI
+
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local player = Players.LocalPlayer
+
+local remote = ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("CupPong"):WaitForChild("ShootBall")
+
+--// GUI
+local gui = Instance.new("ScreenGui")
+gui.Name = "MeowwHub"
+gui.ResetOnSpawn = false
+gui.Parent = player:WaitForChild("PlayerGui")
+
+local main = Instance.new("Frame")
+main.Size = UDim2.new(0,220,0,320)
+main.Position = UDim2.new(0.4,0,0.3,0)
+main.BackgroundColor3 = Color3.fromRGB(25,25,25)
+main.Parent = gui
+main.Active = true
+main.Draggable = true
+
+local header = Instance.new("TextLabel")
+header.Size = UDim2.new(1,0,0,30)
+header.BackgroundColor3 = Color3.fromRGB(35,35,35)
+header.Text = "meoww hub"
+header.TextColor3 = Color3.new(1,1,1)
+header.Font = Enum.Font.SourceSansBold
+header.TextSize = 18
+header.Parent = main
+
+local close = Instance.new("TextButton")
+close.Size = UDim2.new(0,30,0,30)
+close.Position = UDim2.new(1,-30,0,0)
+close.Text = "X"
+close.BackgroundColor3 = Color3.fromRGB(170,0,0)
+close.TextColor3 = Color3.new(1,1,1)
+close.Parent = main
+
+local minimize = Instance.new("TextButton")
+minimize.Size = UDim2.new(0,30,0,30)
+minimize.Position = UDim2.new(1,-60,0,0)
+minimize.Text = "-"
+minimize.BackgroundColor3 = Color3.fromRGB(60,60,60)
+minimize.TextColor3 = Color3.new(1,1,1)
+minimize.Parent = main
+
+local container = Instance.new("Frame")
+container.Size = UDim2.new(1,0,1,-30)
+container.Position = UDim2.new(0,0,0,30)
+container.BackgroundTransparency = 1
+container.Parent = main
+
+local layout = Instance.new("UIListLayout")
+layout.Parent = container
+layout.Padding = UDim.new(0,4)
+
+--// Function create button
+local function createBallButton(name, vec, power)
+	local b = Instance.new("TextButton")
+	b.Size = UDim2.new(1,-6,0,26)
+	b.BackgroundColor3 = Color3.fromRGB(40,40,40)
+	b.TextColor3 = Color3.new(1,1,1)
+	b.Text = name
+	b.Parent = container
+	
+	b.MouseButton1Click:Connect(function()
+		local args = {
+			vector.create(vec.X,vec.Y,vec.Z),
+			power
+		}
+		remote:FireServer(unpack(args))
+	end)
+end
+
+--// BALL BUTTONS
+createBallButton("Bola 1", Vector3.new(-0.9999889731407166,0,0.004701283294707537), 9.820427681389408)
+createBallButton("Bola 2", Vector3.new(-0.9993938207626343,0,-0.03481347858905792), 10.413216872323172)
+createBallButton("Bola 3", Vector3.new(-0.9999574422836304,0,-0.009223286993801594), 10.49805107583587)
+createBallButton("Bola 4", Vector3.new(-0.9996289014816284,0,0.027241718024015427), 10.094299304310006)
+createBallButton("Bola 5", Vector3.new(-0.9978772401809692,0,0.06512337923049927), 10.4128884808854)
+createBallButton("Bola 6", Vector3.new(-0.999245285987854,0,-0.038843587040901184), 10.854652120173327)
+createBallButton("Bola 7", Vector3.new(-0.9998418092727661,0,0.01778656244277954), 10.585739474835439)
+createBallButton("Bola 8", Vector3.new(-0.9999120235443115,0,-0.013266249559819698), 10.414066216839213)
+createBallButton("Bola 9", Vector3.new(-0.9999526739120483,0,0.009727248921990395), 10.37333853285781)
+createBallButton("Bola 10", Vector3.new(-0.9988405704498291,0,-0.04814058542251587), 5.008615824612745)
+
+--// CLOSE
+close.MouseButton1Click:Connect(function()
+	gui:Destroy()
+end)
+
+--// MINIMIZE
+local minimized = false
+minimize.MouseButton1Click:Connect(function()
+	minimized = not minimized
+	container.Visible = not minimized
+	if minimized then
+		main.Size = UDim2.new(0,220,0,30)
+	else
+		main.Size = UDim2.new(0,220,0,320)
+	end
+end)
