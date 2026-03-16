@@ -1,0 +1,346 @@
+-- MEOW HUB | Utility_Page.lua
+-- Baca context dari _G.MeowCtx (diset oleh Loader)
+local ctx = _G.MeowCtx
+if not ctx then warn("[Utility_Page] ctx NIL!"); return end
+
+local Theme          = ctx.Theme
+local Tween          = ctx.Tween
+local New            = ctx.New
+local Corner         = ctx.Corner
+local Stroke         = ctx.Stroke
+local MakeToggleCard = ctx.MakeToggleCard
+local SectionLabel   = ctx.SectionLabel
+local PageUtility    = ctx.Pages.Utility
+
+local Players     = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local currentSpeed = 16
+
+-- Icons - utf8.char aman dari obfuscator
+local IC_JUMP   = utf8.char(11014)   -- panah atas
+local IC_ESP    = utf8.char(128065)  -- mata
+local IC_NOCLIP = utf8.char(128123)  -- hantu
+local IC_SPEED  = utf8.char(127939)  -- lari
+local IC_LIGHT  = utf8.char(128161)  -- lampu
+local IC_SPEC   = utf8.char(128064)  -- mata ganda
+local IC_TP     = utf8.char(9889)    -- petir
+
+-- ScrollingFrame utama untuk tab Utility
+local UtilScroll = New("ScrollingFrame", {
+    Size                 = UDim2.new(1, 0, 1, 0),
+    BackgroundTransparency = 1,
+    BorderSizePixel      = 0,
+    ScrollBarThickness   = 3,
+    ScrollBarImageColor3 = Theme.Accent,
+    CanvasSize           = UDim2.new(0, 0, 0, 490),
+    ScrollingDirection   = Enum.ScrollingDirection.Y,
+    ZIndex               = 10,
+}, PageUtility)
+
+-- ============================================================
+--  MOVEMENT
+-- ============================================================
+SectionLabel(UtilScroll, 8, "MOVEMENT")
+
+local IJCard = New("Frame", {
+    Size             = UDim2.new(1, -16, 0, 38),
+    Position         = UDim2.new(0, 8, 0, 30),
+    BackgroundColor3 = Theme.Card,
+    BackgroundTransparency = 0.3,
+    BorderSizePixel  = 0,
+    ZIndex           = 11,
+}, UtilScroll)
+Corner(IJCard, 7)
+local IJStroke = New("UIStroke", {
+    Color            = Theme.Border,
+    Thickness        = 1,
+    ApplyStrokeMode  = Enum.ApplyStrokeMode.Border,
+}, IJCard)
+
+New("TextLabel", {
+    Text             = IC_JUMP,
+    Size             = UDim2.new(0, 26, 1, 0),
+    Position         = UDim2.new(0, 6, 0, 0),
+    BackgroundTransparency = 1,
+    TextColor3       = Theme.TextDim,
+    TextSize         = 16,
+    Font             = Enum.Font.Gotham,
+    ZIndex           = 12,
+}, IJCard)
+
+New("TextLabel", {
+    Text             = "Infinite Jump",
+    Size             = UDim2.new(1, -80, 1, 0),
+    Position         = UDim2.new(0, 34, 0, 0),
+    BackgroundTransparency = 1,
+    TextColor3       = Theme.TextMain,
+    TextSize         = 11,
+    Font             = Enum.Font.GothamSemibold,
+    TextXAlignment   = Enum.TextXAlignment.Left,
+    ZIndex           = 12,
+}, IJCard)
+
+local IJBtn = New("TextButton", {
+    Text             = "OFF",
+    Size             = UDim2.new(0, 44, 0, 22),
+    Position         = UDim2.new(1, -50, 0.5, -11),
+    BackgroundColor3 = Color3.fromRGB(30, 16, 20),
+    TextColor3       = Color3.fromRGB(180, 60, 80),
+    TextSize         = 10,
+    Font             = Enum.Font.GothamBold,
+    BorderSizePixel  = 0,
+    ZIndex           = 13,
+    AutoButtonColor  = false,
+}, IJCard)
+Corner(IJBtn, 11)
+Stroke(IJBtn, Color3.fromRGB(80, 20, 30), 1)
+
+local ijOn = false
+IJBtn.MouseButton1Click:Connect(function()
+    ijOn = not ijOn
+    ctx.SetInfiniteJump(ijOn)
+    if ijOn then
+        IJBtn.Text = "ON"
+        Tween(IJBtn,    { BackgroundColor3 = Color3.fromRGB(0, 34, 26), TextColor3 = Theme.Accent })
+        Tween(IJCard,   { BackgroundColor3 = Color3.fromRGB(0, 18, 28), BackgroundTransparency = 0.15 })
+        Tween(IJStroke, { Color = Theme.Accent })
+    else
+        IJBtn.Text = "OFF"
+        Tween(IJBtn,    { BackgroundColor3 = Color3.fromRGB(30, 16, 20), TextColor3 = Color3.fromRGB(180, 60, 80) })
+        Tween(IJCard,   { BackgroundColor3 = Theme.Card, BackgroundTransparency = 0.3 })
+        Tween(IJStroke, { Color = Theme.Border })
+    end
+end)
+IJBtn.MouseEnter:Connect(function()
+    if not ijOn then Tween(IJBtn, { BackgroundColor3 = Color3.fromRGB(45, 20, 26) }) end
+end)
+IJBtn.MouseLeave:Connect(function()
+    if not ijOn then Tween(IJBtn, { BackgroundColor3 = Color3.fromRGB(30, 16, 20) }) end
+end)
+
+-- ============================================================
+--  VISUAL
+-- ============================================================
+SectionLabel(UtilScroll, 78, "VISUAL")
+MakeToggleCard(UtilScroll, 98, IC_ESP, "ESP Player", function(s)
+    ctx.SetEsp(s)
+end)
+
+-- ============================================================
+--  PHYSICS
+-- ============================================================
+SectionLabel(UtilScroll, 146, "PHYSICS")
+MakeToggleCard(UtilScroll, 166, IC_NOCLIP, "Noclip", function(s)
+    ctx.SetNoclip(s)
+end)
+
+-- ============================================================
+--  WALKSPEED
+-- ============================================================
+SectionLabel(UtilScroll, 214, "WALKSPEED")
+
+local WsCard = New("Frame", {
+    Size             = UDim2.new(1, -16, 0, 52),
+    Position         = UDim2.new(0, 8, 0, 234),
+    BackgroundColor3 = Theme.Card,
+    BackgroundTransparency = 0.3,
+    BorderSizePixel  = 0,
+    ZIndex           = 11,
+}, UtilScroll)
+Corner(WsCard, 7)
+Stroke(WsCard, Theme.Border, 1)
+
+New("TextLabel", {
+    Text             = IC_SPEED,
+    Size             = UDim2.new(0, 26, 0, 26),
+    Position         = UDim2.new(0, 6, 0, 4),
+    BackgroundTransparency = 1,
+    TextSize         = 16,
+    Font             = Enum.Font.Gotham,
+    ZIndex           = 12,
+}, WsCard)
+
+New("TextLabel", {
+    Text             = "Walk Speed",
+    Size             = UDim2.new(1, -80, 0, 22),
+    Position         = UDim2.new(0, 34, 0, 4),
+    BackgroundTransparency = 1,
+    TextColor3       = Theme.TextMain,
+    TextSize         = 11,
+    Font             = Enum.Font.GothamSemibold,
+    TextXAlignment   = Enum.TextXAlignment.Left,
+    ZIndex           = 12,
+}, WsCard)
+
+local WsDisplay = New("TextLabel", {
+    Text             = "16",
+    Size             = UDim2.new(0, 28, 0, 16),
+    Position         = UDim2.new(1, -36, 0, 5),
+    BackgroundTransparency = 1,
+    TextColor3       = Theme.Accent,
+    TextSize         = 11,
+    Font             = Enum.Font.GothamBold,
+    TextXAlignment   = Enum.TextXAlignment.Center,
+    ZIndex           = 12,
+}, WsCard)
+
+local WsMinus = New("TextButton", {
+    Text             = "-",
+    Size             = UDim2.new(0, 28, 0, 22),
+    Position         = UDim2.new(0, 6, 0, 26),
+    BackgroundColor3 = Color3.fromRGB(20, 20, 36),
+    TextColor3       = Theme.TextMain,
+    TextSize         = 16,
+    Font             = Enum.Font.GothamBold,
+    BorderSizePixel  = 0,
+    ZIndex           = 13,
+    AutoButtonColor  = false,
+}, WsCard)
+Corner(WsMinus, 5)
+Stroke(WsMinus, Theme.Border, 1)
+
+local WsBarBg = New("Frame", {
+    Size             = UDim2.new(1, -90, 0, 6),
+    Position         = UDim2.new(0, 40, 0, 33),
+    BackgroundColor3 = Color3.fromRGB(20, 30, 50),
+    BorderSizePixel  = 0,
+    ZIndex           = 12,
+}, WsCard)
+Corner(WsBarBg, 3)
+
+local WsBarFill = New("Frame", {
+    Size             = UDim2.new(0.16, 0, 1, 0),
+    BackgroundColor3 = Theme.Accent,
+    BorderSizePixel  = 0,
+    ZIndex           = 13,
+}, WsBarBg)
+Corner(WsBarFill, 3)
+
+local WsPlus = New("TextButton", {
+    Text             = "+",
+    Size             = UDim2.new(0, 28, 0, 22),
+    Position         = UDim2.new(1, -34, 0, 26),
+    BackgroundColor3 = Color3.fromRGB(20, 20, 36),
+    TextColor3       = Theme.TextMain,
+    TextSize         = 16,
+    Font             = Enum.Font.GothamBold,
+    BorderSizePixel  = 0,
+    ZIndex           = 13,
+    AutoButtonColor  = false,
+}, WsCard)
+Corner(WsPlus, 5)
+Stroke(WsPlus, Theme.Border, 1)
+
+local function UpdateWs(speed)
+    currentSpeed = speed
+    WsDisplay.Text = tostring(speed)
+    Tween(WsBarFill, { Size = UDim2.new(math.clamp(speed / 100, 0, 1), 0, 1, 0) })
+    ctx.ApplyWalkSpeed(speed)
+end
+WsMinus.MouseButton1Click:Connect(function() UpdateWs(math.max(2,   currentSpeed - 4)) end)
+WsPlus.MouseButton1Click:Connect(function()  UpdateWs(math.min(100, currentSpeed + 4)) end)
+for _, btn in ipairs({ WsMinus, WsPlus }) do
+    btn.MouseEnter:Connect(function() Tween(btn, { BackgroundColor3 = Color3.fromRGB(0, 34, 46) }) end)
+    btn.MouseLeave:Connect(function() Tween(btn, { BackgroundColor3 = Color3.fromRGB(20, 20, 36) }) end)
+end
+
+-- ============================================================
+--  PLAYER LIGHT
+-- ============================================================
+SectionLabel(UtilScroll, 296, "PLAYER LIGHT")
+MakeToggleCard(UtilScroll, 316, IC_LIGHT, "Player Light", function(s)
+    if s then
+        ctx.CreateLight(Color3.new(1, 1, 1), 5, 20)
+    else
+        ctx.RemoveLight()
+    end
+end)
+
+-- ============================================================
+--  SPECTATOR
+-- ============================================================
+SectionLabel(UtilScroll, 364, "SPECTATOR")
+
+local SpecBtn = New("TextButton", {
+    Text             = IC_SPEC .. "  Spectate Player",
+    Size             = UDim2.new(1, -16, 0, 32),
+    Position         = UDim2.new(0, 8, 0, 384),
+    BackgroundColor3 = Color3.fromRGB(10, 28, 42),
+    BackgroundTransparency = 0.2,
+    TextColor3       = Theme.Accent,
+    TextSize         = 11,
+    Font             = Enum.Font.GothamSemibold,
+    BorderSizePixel  = 0,
+    ZIndex           = 11,
+    AutoButtonColor  = false,
+}, UtilScroll)
+Corner(SpecBtn, 7)
+New("UIStroke", {
+    Color           = Theme.AccentDim,
+    Thickness       = 1,
+    ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+}, SpecBtn)
+
+local spectating = false
+SpecBtn.MouseButton1Click:Connect(function()
+    if spectating then
+        ctx.StopSpectate()
+        spectating = false
+        SpecBtn.Text = IC_SPEC .. "  Spectate Player"
+        Tween(SpecBtn, { BackgroundColor3 = Color3.fromRGB(10, 28, 42) })
+    else
+        for _, p in pairs(Players:GetPlayers()) do
+            if p ~= LocalPlayer then
+                ctx.StartSpectate(p)
+                spectating = true
+                SpecBtn.Text = "Stop: " .. p.Name
+                Tween(SpecBtn, { BackgroundColor3 = Color3.fromRGB(0, 34, 26) })
+                break
+            end
+        end
+    end
+end)
+SpecBtn.MouseEnter:Connect(function() Tween(SpecBtn, { BackgroundTransparency = 0.08 }) end)
+SpecBtn.MouseLeave:Connect(function() Tween(SpecBtn, { BackgroundTransparency = 0.2  }) end)
+
+-- ============================================================
+--  TELEPORT
+-- ============================================================
+SectionLabel(UtilScroll, 426, "TELEPORT")
+
+local TpBtn = New("TextButton", {
+    Text             = IC_TP .. "  Teleport ke Player",
+    Size             = UDim2.new(1, -16, 0, 32),
+    Position         = UDim2.new(0, 8, 0, 446),
+    BackgroundColor3 = Color3.fromRGB(18, 10, 36),
+    BackgroundTransparency = 0.2,
+    TextColor3       = Color3.fromRGB(168, 85, 247),
+    TextSize         = 11,
+    Font             = Enum.Font.GothamSemibold,
+    BorderSizePixel  = 0,
+    ZIndex           = 11,
+    AutoButtonColor  = false,
+}, UtilScroll)
+Corner(TpBtn, 7)
+New("UIStroke", {
+    Color           = Color3.fromRGB(80, 40, 130),
+    Thickness       = 1,
+    ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+}, TpBtn)
+
+TpBtn.MouseButton1Click:Connect(function()
+    for _, p in pairs(Players:GetPlayers()) do
+        if p ~= LocalPlayer then
+            ctx.TeleportToPlayer(p)
+            TpBtn.Text = IC_TP .. "  TP: " .. p.Name
+            task.delay(2, function()
+                TpBtn.Text = IC_TP .. "  Teleport ke Player"
+            end)
+            break
+        end
+    end
+end)
+TpBtn.MouseEnter:Connect(function() Tween(TpBtn, { BackgroundTransparency = 0.08 }) end)
+TpBtn.MouseLeave:Connect(function() Tween(TpBtn, { BackgroundTransparency = 0.2  }) end)
+
+print("[Utility_Page] OK - children: " .. #PageUtility:GetChildren())
