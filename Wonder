@@ -107,6 +107,871 @@ local OBBY_LIST = {
     },
     -- Tambah obby lain di sini nanti
     ["Sciences"] = {
+        TOTAL_TIME = 200,
+        SPAWN_Y = 191.12,
+        LEADERBOARD = {path = {"ROTARYUgc11", "RootPart", "ClaimPrompt"}, type = "ProximityPrompt"},
+        PATH_GAME_START = workspace.Utility.ObbyColliders.GameStart,
+        PATH_GAME_STOP  = workspace.Utility.ObbyColliders.GameStop,
+        PATH_PORTAL     = workspace.Utility.Teleporters.Portal_to_Wc,
+        waypoints = {
+            Vector3.new(-140.48, 189.94, 1002.26),
+            Vector3.new(-86.36, 188.96, 992.49),
+            Vector3.new(-84.84, 188.96, 1004.22),
+            Vector3.new(-82.15, 188.96, 1015.13),
+            Vector3.new(-89.78, 188.96, 1032.39),
+            {pos = Vector3.new(-89.38, 188.96, 1054.91), walk = true},
+            Vector3.new(-88.49, 185.63, 1262.98),
+            Vector3.new(-0.03, 261.96, 1278.05),
+            Vector3.new(-13.03, 261.96, 1253.28),
+            Vector3.new(37.14, 262.56, 1198.84),
+            {pos = Vector3.new(50.92, 261.96, 1198.38), walk = true},
+            Vector3.new(154.97, 230.28, 1195.79),
+            Vector3.new(204.92, 227.31, 1165.96),
+            Vector3.new(200.31, 225.24, 1110.59),
+            Vector3.new(230.82, 230.62, 1111.68),
+            Vector3.new(252.11, 234.37, 1110.65),
+            Vector3.new(253.62, 238.54, 1137.66),
+            Vector3.new(294.22, 245.74, 1122.23),
+            Vector3.new(311.84, 248.80, 1138.51),
+            Vector3.new(327.56, 252.33, 1154.60),
+            Vector3.new(351.62, 257.43, 1137.47),
+            {pos = Vector3.new(430.97, 202.93, 1137.69), walk = true},
+            Vector3.new(431.09, 211.47, 1168.23),
+            Vector3.new(423.58, 225.95, 1189.04),
+            Vector3.new(438.92, 238.10, 1207.57),
+            Vector3.new(447.23, 249.36, 1236.34),
+            Vector3.new(463.39, 259.12, 1250.87),
+            Vector3.new(485.74, 252.76, 1242.21),
+            Vector3.new(486.66, 264.71, 1263.18),
+            Vector3.new(504.17, 264.93, 1260.27),
+            Vector3.new(503.82, 276.29, 1277.05),
+            Vector3.new(507.13, 283.52, 1304.33),
+            Vector3.new(278.63, 143.07, 1336.67),
+            Vector3.new(308.85, 161.06, 1402.36),
+            Vector3.new(360.98, 174.98, 1414.63),
+            Vector3.new(364.08, 164.02, 1443.61),
+            Vector3.new(377.81, 153.30, 1501.33),
+            Vector3.new(419.44, 162.76, 1513.54),
+            Vector3.new(455.94, 176.17, 1512.25),
+            Vector3.new(465.63, 175.96, 1531.48),
+            Vector3.new(446.70, 123.96, 1676.49),
+            Vector3.new(455.91, 238.96, 1734.56),
+            Vector3.new(456.06, 246.47, 1791.14),
+            Vector3.new(454.08, 245.81, 1825.44),
+            Vector3.new(468.20, 237.96, 1900.00),
+            Vector3.new(481.33, 227.31, 1994.41),
+            Vector3.new(385.46, 227.02, 2015.31),
+            {pos = Vector3.new(359.25, 227.02, 2014.16), walk = true},
+            Vector3.new(348.81, 235.26, 1896.26),
+            Vector3.new(337.48, 234.19, 1852.23),
+            Vector3.new(320.28, 236.09, 1847.11),
+            Vector3.new(299.87, 240.07, 1843.60),
+            Vector3.new(245.21, 286.96, 1844.99),
+            Vector3.new(241.93, 286.96, 1960.88),
+            Vector3.new(321.71, 337.00, 1927.55),
+            Vector3.new(299.63, 338.92, 1886.97),
+            Vector3.new(217.44, 331.69, 1934.91),
+            Vector3.new(218.58, 335.11, 1893.22),
+            Vector3.new(207.48, 373.28, 1812.43),
+            Vector3.new(150.83, 367.85, 1736.17),
+            Vector3.new(50.66, 387.67, 1753.05),
+            Vector3.new(73.50, 395.66, 1800.09),
+            Vector3.new(89.14, 394.82, 1797.88),
+            Vector3.new(81.82, 395.72, 1813.90),
+            Vector3.new(81.80, 391.93, 1854.22),
+            Vector3.new(83.25, 390.96, 1876.54),
+            Vector3.new(80.57, 377.96, 1939.86),
+            Vector3.new(71.19, 389.13, 2023.62),
+            Vector3.new(95.90, 404.63, 2025.67),
+            Vector3.new(115.84, 426.59, 1971.91),
+            Vector3.new(128.84, 445.36, 1951.63),
+            Vector3.new(114.77, 456.80, 1909.94),
+            Vector3.new(58.73, 446.61, 1908.26),
+            Vector3.new(45.56, 447.36, 1908.08),
+            Vector3.new(-26.76, 451.67, 1915.26),
+            Vector3.new(-56.59, 462.99, 1922.97),
+            Vector3.new(-129.11, 453.96, 1812.20),
+            Vector3.new(-155.78, 445.75, 1812.08),
+            Vector3.new(-152.98, 474.96, 1790.20),
+            Vector3.new(-372.47, 272.50, 1813.21),
+            Vector3.new(-372.73, 271.67, 1797.46),
+            Vector3.new(-372.79, 301.87, 1694.60),
+            Vector3.new(-372.62, 301.87, 1680.25),
+            Vector3.new(-357.44, 307.52, 1661.18),
+            Vector3.new(-356.36, 307.52, 1645.28),
+            Vector3.new(-363.03, 322.69, 1583.58),
+            Vector3.new(-402.60, 322.67, 1580.59),
+            Vector3.new(-356.99, 341.97, 1540.12),
+            Vector3.new(-392.11, 341.97, 1503.31),
+            Vector3.new(-376.61, 351.72, 1520.28),
+            Vector3.new(-378.03, 361.61, 1509.32),
+            Vector3.new(-378.62, 377.69, 1436.30),
+            Vector3.new(-401.22, 375.96, 1436.32),
+            Vector3.new(-492.30, 374.67, 1449.26),
+            Vector3.new(-518.40, 507.96, 1425.69),
+            Vector3.new(-517.79, 508.91, 1409.97),
+            Vector3.new(-520.45, 511.67, 1313.81),
+            Vector3.new(-517.08, 502.36, 1159.99),
+            Vector3.new(-518.26, 505.44, 1135.74),
+            Vector3.new(-402.74, 462.37, 1104.01),
+            Vector3.new(-314.54, 477.96, 1111.26),
+            Vector3.new(-302.60, 477.96, 1111.44),
+            Vector3.new(-303.95, 477.96, 1097.43),
+            Vector3.new(-316.29, 477.96, 1099.13),
+            Vector3.new(-340.56, 457.81, 1108.46),
+        }
+    },
+}
+
+-- =====================================================
+-- GUI BUILD
+-- =====================================================
+pcall(function()
+    if PG:FindFirstChild("WonderChaseGUI") then PG.WonderChaseGUI:Destroy() end
+end)
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "WonderChaseGUI"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.IgnoreGuiInset = true
+ScreenGui.Parent = PG
+
+-- Main Frame
+local Main = Instance.new("Frame")
+Main.Name = "Main"
+Main.Size = UDim2.fromOffset(300, 310)
+Main.Position = UDim2.fromOffset(60, 150)
+Main.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+Main.BorderSizePixel = 0
+Main.Parent = ScreenGui
+Instance.new("UICorner", Main).CornerRadius = UDim.new(0, 14)
+local mainStroke = Instance.new("UIStroke", Main)
+mainStroke.Thickness = 1.5
+mainStroke.Color = Color3.fromRGB(80, 85, 120)
+
+-- Header Bar
+local Header = Instance.new("Frame")
+Header.Size = UDim2.new(1, 0, 0, 46)
+Header.BackgroundColor3 = Color3.fromRGB(28, 32, 48)
+Header.BorderSizePixel = 0
+Header.Parent = Main
+Instance.new("UICorner", Header).CornerRadius = UDim.new(0, 14)
+
+-- Fix bottom corners of header
+local HeaderFix = Instance.new("Frame")
+HeaderFix.Size = UDim2.new(1, 0, 0, 14)
+HeaderFix.Position = UDim2.new(0, 0, 1, -14)
+HeaderFix.BackgroundColor3 = Color3.fromRGB(28, 32, 48)
+HeaderFix.BorderSizePixel = 0
+HeaderFix.Parent = Header
+
+-- Title
+local TitleLabel = Instance.new("TextLabel")
+TitleLabel.Size = UDim2.new(1, -80, 1, 0)
+TitleLabel.Position = UDim2.fromOffset(12, 0)
+TitleLabel.BackgroundTransparency = 1
+TitleLabel.Text = "Wonder Chase  |  v0.03"
+TitleLabel.TextColor3 = Color3.fromRGB(180, 190, 255)
+TitleLabel.Font = Enum.Font.GothamBold
+TitleLabel.TextSize = 15
+TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
+TitleLabel.Parent = Header
+
+-- Minimize Button
+local BtnMin = Instance.new("TextButton")
+BtnMin.Size = UDim2.fromOffset(26, 26)
+BtnMin.Position = UDim2.new(1, -58, 0.5, -13)
+BtnMin.BackgroundColor3 = Color3.fromRGB(60, 65, 90)
+BtnMin.Text = "–"
+BtnMin.TextColor3 = Color3.fromRGB(210, 215, 255)
+BtnMin.Font = Enum.Font.GothamBold
+BtnMin.TextSize = 16
+BtnMin.BorderSizePixel = 0
+BtnMin.Parent = Header
+Instance.new("UICorner", BtnMin).CornerRadius = UDim.new(0, 8)
+
+-- Close Button
+local BtnClose = Instance.new("TextButton")
+BtnClose.Size = UDim2.fromOffset(26, 26)
+BtnClose.Position = UDim2.new(1, -28, 0.5, -13)
+BtnClose.BackgroundColor3 = Color3.fromRGB(160, 40, 50)
+BtnClose.Text = "✕"
+BtnClose.TextColor3 = Color3.fromRGB(255, 200, 205)
+BtnClose.Font = Enum.Font.GothamBold
+BtnClose.TextSize = 13
+BtnClose.BorderSizePixel = 0
+BtnClose.Parent = Header
+Instance.new("UICorner", BtnClose).CornerRadius = UDim.new(0, 8)
+
+-- Body
+local Body = Instance.new("Frame")
+Body.Size = UDim2.new(1, -24, 0, 250)
+Body.Position = UDim2.fromOffset(12, 52)
+Body.BackgroundTransparency = 1
+Body.Parent = Main
+
+-- "Select Obby" label
+local SelectLabel = Instance.new("TextLabel")
+SelectLabel.Size = UDim2.new(1, 0, 0, 20)
+SelectLabel.Position = UDim2.fromOffset(0, 0)
+SelectLabel.BackgroundTransparency = 1
+SelectLabel.Text = "Select Obby :"
+SelectLabel.TextColor3 = Color3.fromRGB(170, 175, 210)
+SelectLabel.Font = Enum.Font.GothamBold
+SelectLabel.TextSize = 13
+SelectLabel.TextXAlignment = Enum.TextXAlignment.Left
+SelectLabel.Parent = Body
+
+-- Dropdown Button
+local DropBtn = Instance.new("TextButton")
+DropBtn.Size = UDim2.new(1, 0, 0, 34)
+DropBtn.Position = UDim2.fromOffset(0, 22)
+DropBtn.BackgroundColor3 = Color3.fromRGB(30, 34, 52)
+DropBtn.Text = "  ▾  Pilih Obby..."
+DropBtn.TextColor3 = Color3.fromRGB(200, 205, 235)
+DropBtn.Font = Enum.Font.Gotham
+DropBtn.TextSize = 13
+DropBtn.TextXAlignment = Enum.TextXAlignment.Left
+DropBtn.BorderSizePixel = 0
+DropBtn.Parent = Body
+Instance.new("UICorner", DropBtn).CornerRadius = UDim.new(0, 8)
+Instance.new("UIStroke", DropBtn).Color = Color3.fromRGB(70, 75, 110)
+
+-- Dropdown List (hidden by default)
+local DropList = Instance.new("Frame")
+DropList.Size = UDim2.new(1, 0, 0, 0)
+DropList.Position = UDim2.fromOffset(0, 58)
+DropList.BackgroundColor3 = Color3.fromRGB(26, 29, 44)
+DropList.BorderSizePixel = 0
+DropList.ClipsDescendants = true
+DropList.Visible = false
+DropList.Parent = Body
+Instance.new("UICorner", DropList).CornerRadius = UDim.new(0, 8)
+
+local DropLayout = Instance.new("UIListLayout", DropList)
+DropLayout.SortOrder = Enum.SortOrder.LayoutOrder
+DropLayout.Padding = UDim.new(0, 2)
+
+-- Populate dropdown
+local obbyNames = {}
+for name in pairs(OBBY_LIST) do table.insert(obbyNames, name) end
+table.sort(obbyNames)
+
+for _, name in ipairs(obbyNames) do
+    local item = Instance.new("TextButton")
+    item.Size = UDim2.new(1, -8, 0, 30)
+    item.BackgroundColor3 = Color3.fromRGB(36, 40, 58)
+    item.Text = "  " .. name
+    item.TextColor3 = Color3.fromRGB(200, 210, 240)
+    item.Font = Enum.Font.Gotham
+    item.TextSize = 13
+    item.TextXAlignment = Enum.TextXAlignment.Left
+    item.BorderSizePixel = 0
+    item.Name = name
+    item.Parent = DropList
+    Instance.new("UICorner", item).CornerRadius = UDim.new(0, 6)
+end
+
+-- Divider
+local Divider = Instance.new("Frame")
+Divider.Size = UDim2.new(1, 0, 0, 1)
+Divider.Position = UDim2.fromOffset(0, 62)
+Divider.BackgroundColor3 = Color3.fromRGB(55, 60, 90)
+Divider.BorderSizePixel = 0
+Divider.Parent = Body
+
+-- Timer Display
+local TimerLabel = Instance.new("TextLabel")
+TimerLabel.Size = UDim2.new(1, 0, 0, 40)
+TimerLabel.Position = UDim2.fromOffset(0, 72)
+TimerLabel.BackgroundTransparency = 1
+TimerLabel.Text = "⏱  —"
+TimerLabel.TextColor3 = Color3.fromRGB(255, 220, 80)
+TimerLabel.Font = Enum.Font.GothamBold
+TimerLabel.TextSize = 26
+TimerLabel.Parent = Body
+
+-- Status
+local StatusLabel = Instance.new("TextLabel")
+StatusLabel.Size = UDim2.new(1, 0, 0, 20)
+StatusLabel.Position = UDim2.fromOffset(0, 114)
+StatusLabel.BackgroundTransparency = 1
+StatusLabel.Text = "Pilih obby lalu tekan START"
+StatusLabel.TextColor3 = Color3.fromRGB(160, 165, 195)
+StatusLabel.Font = Enum.Font.Gotham
+StatusLabel.TextSize = 12
+StatusLabel.Parent = Body
+
+-- Buttons Row
+local BtnRow = Instance.new("Frame")
+BtnRow.Size = UDim2.new(1, 0, 0, 38)
+BtnRow.Position = UDim2.fromOffset(0, 142)
+BtnRow.BackgroundTransparency = 1
+BtnRow.Parent = Body
+
+local BtnLayout = Instance.new("UIListLayout", BtnRow)
+BtnLayout.FillDirection = Enum.FillDirection.Horizontal
+BtnLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+BtnLayout.Padding = UDim.new(0, 8)
+
+local function makeBtn(text, bgColor)
+    local b = Instance.new("TextButton")
+    b.Size = UDim2.fromOffset(78, 34)
+    b.BackgroundColor3 = bgColor
+    b.Text = text
+    b.TextColor3 = Color3.fromRGB(240, 245, 255)
+    b.Font = Enum.Font.GothamBold
+    b.TextSize = 13
+    b.BorderSizePixel = 0
+    b.Parent = BtnRow
+    Instance.new("UICorner", b).CornerRadius = UDim.new(0, 9)
+    return b
+end
+
+local BtnStart = makeBtn("▶ START", Color3.fromRGB(40, 140, 70))
+local BtnPause = makeBtn("⏸ PAUSE", Color3.fromRGB(180, 130, 20))
+local BtnStop  = makeBtn("■ STOP",  Color3.fromRGB(160, 40, 50))
+
+-- Leaderboard Button (baris kedua)
+local BtnRowLB = Instance.new("Frame")
+BtnRowLB.Size = UDim2.new(1, 0, 0, 34)
+BtnRowLB.Position = UDim2.fromOffset(0, 184)
+BtnRowLB.BackgroundTransparency = 1
+BtnRowLB.Parent = Body
+local BtnLBLayout = Instance.new("UIListLayout", BtnRowLB)
+BtnLBLayout.FillDirection = Enum.FillDirection.Horizontal
+BtnLBLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+BtnLBLayout.Padding = UDim.new(0, 8)
+local BtnLeaderboard = makeBtn("🏆 Leaderboard", Color3.fromRGB(100, 60, 160))
+BtnLeaderboard.Size = UDim2.fromOffset(200, 30)
+BtnLeaderboard.Parent = BtnRowLB
+
+-- =====================================================
+-- MINI ICON (saat minimize)
+-- =====================================================
+local MiniIcon = Instance.new("TextButton")
+MiniIcon.Name = "MiniIcon"
+MiniIcon.Size = UDim2.fromOffset(48, 48)
+MiniIcon.Position = UDim2.fromOffset(20, 150)
+MiniIcon.BackgroundColor3 = Color3.fromRGB(28, 32, 48)
+MiniIcon.Text = "WC"
+MiniIcon.TextColor3 = Color3.fromRGB(180, 190, 255)
+MiniIcon.Font = Enum.Font.GothamBold
+MiniIcon.TextSize = 14
+MiniIcon.BorderSizePixel = 0
+MiniIcon.Visible = false
+MiniIcon.Parent = ScreenGui
+Instance.new("UICorner", MiniIcon).CornerRadius = UDim.new(0, 14)
+local miniStroke = Instance.new("UIStroke", MiniIcon)
+miniStroke.Thickness = 1.5
+miniStroke.Color = Color3.fromRGB(80, 85, 120)
+
+-- =====================================================
+-- DRAGGABLE
+-- =====================================================
+local function makeDraggable(frame)
+    local dragging, dragStart, startPos = false, nil, nil
+    frame.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = true
+            dragStart = input.Position
+            startPos = frame.Position
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then dragging = false end
+            end)
+        end
+    end)
+    frame.InputChanged:Connect(function(input)
+        if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+            local delta = input.Position - dragStart
+            frame.Position = UDim2.fromOffset(startPos.X.Offset + delta.X, startPos.Y.Offset + delta.Y)
+        end
+    end)
+end
+
+makeDraggable(Main)
+makeDraggable(MiniIcon)
+
+-- =====================================================
+-- DROPDOWN LOGIC
+-- =====================================================
+local dropOpen = false
+local selectedObby = nil
+
+local function closeDropdown()
+    dropOpen = false
+    TweenService:Create(DropList, TweenInfo.new(0.15), {Size = UDim2.new(1, 0, 0, 0)}):Play()
+    task.delay(0.15, function() DropList.Visible = false end)
+end
+
+local function openDropdown()
+    dropOpen = true
+    local itemCount = #obbyNames
+    DropList.Visible = true
+    TweenService:Create(DropList, TweenInfo.new(0.15), {Size = UDim2.new(1, 0, 0, itemCount * 32 + 4)}):Play()
+end
+
+DropBtn.MouseButton1Click:Connect(function()
+    if dropOpen then closeDropdown() else openDropdown() end
+end)
+
+for _, item in ipairs(DropList:GetChildren()) do
+    if item:IsA("TextButton") then
+        item.MouseButton1Click:Connect(function()
+            selectedObby = item.Name
+            DropBtn.Text = "  ✔  " .. item.Name
+            DropBtn.TextColor3 = Color3.fromRGB(130, 220, 160)
+            StatusLabel.Text = "Siap: " .. item.Name .. " — Tekan START"
+            closeDropdown()
+        end)
+    end
+end
+
+-- =====================================================
+-- MINIMIZE / CLOSE
+-- =====================================================
+BtnMin.MouseButton1Click:Connect(function()
+    Main.Visible = false
+    MiniIcon.Visible = true
+end)
+
+BtnClose.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
+end)
+
+MiniIcon.MouseButton1Click:Connect(function()
+    Main.Visible = true
+    MiniIcon.Visible = false
+end)
+
+-- =====================================================
+-- CORE LOGIC
+-- =====================================================
+local running = false
+local paused  = false
+local warpDone = false
+local timerThread = nil
+local mainThread  = nil
+
+local function getHRP()
+    local char = player.Character or player.CharacterAdded:Wait()
+    return char:WaitForChild("HumanoidRootPart")
+end
+
+local function getPortalCFrame(portal)
+    if portal:IsA("BasePart") then
+        return portal.CFrame
+    elseif portal:IsA("Model") then
+        if portal.PrimaryPart then return portal.PrimaryPart.CFrame end
+        local ok, piv = pcall(function() return portal:GetPivot() end)
+        if ok and piv then return piv end
+        for _, d in ipairs(portal:GetDescendants()) do
+            if d:IsA("BasePart") then return d.CFrame end
+        end
+    end
+    return nil
+end
+
+-- Fungsi klik Replay
+local function clickReplay()
+    local PlayerGui = player:WaitForChild("PlayerGui")
+    local maxWait = 30
+    local elapsed = 0
+    local obbyResults = nil
+
+    StatusLabel.Text = "⏳ Menunggu Results..."
+
+    while elapsed < maxWait do
+        local ok, res = pcall(function()
+            local ui = PlayerGui:FindFirstChild("PlayerUi")
+            if not ui then error("no PlayerUi") end
+            local popups = ui:FindFirstChild("Popups")
+            if not popups then error("no Popups") end
+            local results = popups:FindFirstChild("ObbyResults")
+            if not results then error("no ObbyResults") end
+            return results
+        end)
+        if ok and res then obbyResults = res break end
+        task.wait(0.5)
+        elapsed = elapsed + 0.5
+    end
+
+    if not obbyResults then
+        StatusLabel.Text = "⚠ Results tidak muncul"
+        return false
+    end
+
+    elapsed = 0
+    while elapsed < maxWait do
+        if obbyResults.Visible then break end
+        task.wait(0.3)
+        elapsed = elapsed + 0.3
+    end
+
+    if not obbyResults.Visible then
+        StatusLabel.Text = "⚠ Results tidak visible"
+        return false
+    end
+
+    StatusLabel.Text = "✅ Results muncul! Klik Replay..."
+    task.wait(0.5)
+
+    local replayBtn = obbyResults:FindFirstChild("ReplayButton")
+    if not replayBtn then
+        StatusLabel.Text = "⚠ ReplayButton tidak ditemukan"
+        return false
+    end
+
+    task.wait(0.5)
+    local btnPos = replayBtn.AbsolutePosition
+    local btnSize = replayBtn.AbsoluteSize
+    local centerX = btnPos.X + btnSize.X / 2
+    local centerY = btnPos.Y + btnSize.Y / 2 + 60
+
+    local VIM = game:GetService("VirtualInputManager")
+    VIM:SendMouseMoveEvent(centerX, centerY, game)
+    task.wait(0.1)
+    VIM:SendMouseButtonEvent(centerX, centerY, 0, true, game, 0)
+    task.wait(0.08)
+    VIM:SendMouseButtonEvent(centerX, centerY, 0, false, game, 0)
+
+    StatusLabel.Text = "🔄 Replay diklik! Menunggu reset..."
+    TimerLabel.Text = "⏱  —"
+    return true
+end
+
+-- Fungsi tunggu player berada di Y sekitar 63.14 lalu loop
+local function waitResetAndLoop(cfg, loopFunc)
+    task.spawn(function()
+        StatusLabel.Text = "⏳ Menunggu spawn (Y~63)..."
+
+        local targetY = cfg and cfg.SPAWN_Y or 63.14
+        local tolerance = 3  -- toleransi ±3 studs pada Y
+        local timeout = 60
+        local elapsed = 0
+
+        while elapsed < timeout and running do
+            local char = player.Character
+            local hrp = char and char:FindFirstChild("HumanoidRootPart")
+            if hrp then
+                local currentY = hrp.Position.Y
+                if math.abs(currentY - targetY) <= tolerance then
+                    break  -- player sudah di Y yang benar
+                end
+            end
+            task.wait(0.3)
+            elapsed = elapsed + 0.3
+        end
+
+        if not running then return end
+
+        StatusLabel.Text = "✅ Spawn terdeteksi! Delay 2s..."
+        task.wait(2)
+
+        if not running then return end
+
+        StatusLabel.Text = "🔄 Mulai ulang..."
+        loopFunc()
+    end)
+end
+
+local function doPortalTeleport(cfg, loopFunc)
+    warpDone = true
+    TimerLabel.Text = "⏱  0s"
+    StatusLabel.Text = "Teleport ke Portal..."
+    local hrp = getHRP()
+    local cf = getPortalCFrame(cfg.PATH_PORTAL)
+    if hrp and cf then
+        hrp.CFrame = cf + Vector3.new(0, 5, 0)
+    end
+
+    task.spawn(function()
+        local success = clickReplay()
+        if success and running then
+            waitResetAndLoop(cfg, loopFunc)
+        end
+    end)
+end
+
+local function waitUnpaused()
+    while paused and running do task.wait(0.1) end
+end
+
+local function stopAll()
+    running = false
+    paused = false
+    warpDone = true
+    if timerThread then task.cancel(timerThread) timerThread = nil end
+    if mainThread  then task.cancel(mainThread)  mainThread  = nil end
+    TimerLabel.Text = "⏱  —"
+    StatusLabel.Text = "Dihentikan."
+    BtnStart.BackgroundColor3 = Color3.fromRGB(40, 140, 70)
+    BtnStart.Text = "▶ START"
+end
+
+-- START
+BtnStart.MouseButton1Click:Connect(function()
+    if running then return end
+    if not selectedObby then
+        StatusLabel.Text = "⚠ Pilih obby dulu!"
+        return
+    end
+
+    local cfg = OBBY_LIST[selectedObby]
+    running = true
+    paused  = false
+    warpDone = false
+
+    BtnStart.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+    BtnStart.Text = "Running..."
+
+    -- Fungsi satu putaran (dipanggil ulang tiap loop)
+    local function runOneLap()
+        if not running then return end
+        warpDone = false
+
+        -- Cancel thread lama jika ada
+        if timerThread then task.cancel(timerThread) timerThread = nil end
+        if mainThread  then task.cancel(mainThread)  mainThread  = nil end
+
+        local startTime = os.clock()
+
+        -- TIMER THREAD
+        timerThread = task.spawn(function()
+            while running and not warpDone do
+                waitUnpaused()
+                if not running then break end
+                local elapsed = os.clock() - startTime
+                local remain = math.max(0, cfg.TOTAL_TIME - elapsed)
+                TimerLabel.Text = ("⏱  %ds"):format(math.ceil(remain))
+                if remain <= 0 then
+                    if not warpDone then doPortalTeleport(cfg, runOneLap) end
+                    break
+                end
+                task.wait(0.5)
+            end
+        end)
+
+        -- MAIN TELEPORT THREAD
+        mainThread = task.spawn(function()
+            -- Hapus folder ChatDev jika ada
+            pcall(function()
+                local chatDev = workspace:FindFirstChild("ChatDev")
+                if chatDev then chatDev:Destroy() end
+            end)
+
+            -- GameStart
+            local hrp = getHRP()
+            hrp.CFrame = cfg.PATH_GAME_START.CFrame + Vector3.new(0, 5, 0)
+            StatusLabel.Text = "GameStart ✓"
+            task.wait(1)
+
+            -- Waypoints
+            for i, entry in ipairs(cfg.waypoints) do
+                if not running or warpDone then break end
+                waitUnpaused()
+                if not running or warpDone then break end
+
+                local pos, customDelay, isWalk
+                if typeof(entry) == "Vector3" then
+                    pos = entry
+                    customDelay = 1
+                    isWalk = false
+                else
+                    pos = entry.pos
+                    customDelay = entry.delay or 1
+                    isWalk = entry.walk or false
+                end
+
+                hrp = getHRP()
+                StatusLabel.Text = ("Waypoint %d/%d"):format(i, #cfg.waypoints)
+
+                if isWalk then
+                    local char = hrp.Parent
+                    local Humanoid = char and char:FindFirstChildOfClass("Humanoid")
+                    if Humanoid and hrp then
+                        local target = Vector3.new(pos.X, hrp.Position.Y, pos.Z)
+                        local speed = Humanoid.WalkSpeed > 0 and Humanoid.WalkSpeed or 16
+                        local bv = Instance.new("BodyVelocity")
+                        bv.MaxForce = Vector3.new(1e5, 0, 1e5)
+                        bv.Velocity = Vector3.new(0, 0, 0)
+                        bv.Parent = hrp
+                        local maxTime = 15
+                        local elapsed = 0
+                        while elapsed < maxTime do
+                            if not running or warpDone then break end
+                            local current = hrp.Position
+                            local diff = Vector3.new(target.X - current.X, 0, target.Z - current.Z)
+                            if diff.Magnitude < 2 then break end
+                            local dir = diff.Unit
+                            bv.Velocity = dir * speed
+                            hrp.CFrame = CFrame.lookAt(hrp.CFrame.Position, hrp.CFrame.Position + dir)
+                            task.wait(0.05)
+                            elapsed = elapsed + 0.05
+                        end
+                        bv.Velocity = Vector3.new(0, 0, 0)
+                        bv:Destroy()
+                    end
+                else
+                    hrp.CFrame = CFrame.new(pos + Vector3.new(0, 3, 0))
+                end
+
+                task.wait(customDelay)
+            end
+
+            if warpDone or not running then return end
+
+            -- GameStop
+            hrp = getHRP()
+            hrp.CFrame = cfg.PATH_GAME_STOP.CFrame + Vector3.new(0, 5, 0)
+            StatusLabel.Text = "GameStop ✓ — Menunggu timer..."
+
+            while running and not warpDone do
+                task.wait(0.5)
+            end
+        end)
+    end
+
+    runOneLap()
+end)
+
+-- PAUSE / RESUME
+BtnPause.MouseButton1Click:Connect(function()
+    if not running then return end
+    paused = not paused
+    if paused then
+        BtnPause.Text = "▶ RESUME"
+        BtnPause.BackgroundColor3 = Color3.fromRGB(40, 140, 70)
+        StatusLabel.Text = "⏸ Dijeda..."
+    else
+        BtnPause.Text = "⏸ PAUSE"
+        BtnPause.BackgroundColor3 = Color3.fromRGB(180, 130, 20)
+        StatusLabel.Text = "Dilanjutkan..."
+    end
+end)
+
+-- STOP
+BtnStop.MouseButton1Click:Connect(function()
+    stopAll()
+end)
+
+-- LEADERBOARD
+BtnLeaderboard.MouseButton1Click:Connect(function()
+    if not selectedObby then
+        StatusLabel.Text = "⚠ Pilih obby dulu!"
+        return
+    end
+
+    local cfg = OBBY_LIST[selectedObby]
+    if not cfg.LEADERBOARD then
+        StatusLabel.Text = "⚠ Obby ini tidak punya leaderboard"
+        return
+    end
+
+    local lb = cfg.LEADERBOARD
+
+    if lb.type == "ProximityPrompt" then
+        -- Cari object by path di workspace
+        local ok, target = pcall(function()
+            local node = workspace
+            for _, name in ipairs(lb.path) do
+                node = node:WaitForChild(name, 5)
+            end
+            return node
+        end)
+
+        if not ok or not target then
+            StatusLabel.Text = "⚠ Leaderboard tidak ditemukan"
+            return
+        end
+
+        if target:IsA("ProximityPrompt") then
+            pcall(function()
+                fireproximityprompt(target)
+            end)
+            -- Fallback: trigger via event
+            pcall(function()
+                target.Triggered:Fire(player)
+            end)
+            StatusLabel.Text = "🏆 Leaderboard dibuka!"
+        else
+            StatusLabel.Text = "⚠ Target bukan ProximityPrompt: " .. target.ClassName
+        end
+    end
+end)
+            Vector3.new(-263.32, 251.82, -360.61),
+            Vector3.new(-374.28, 279.59, -272.80),
+            Vector3.new(-155.18, 265.80, -156.99),
+            Vector3.new(-80.75, 296.08, -272.35),
+            Vector3.new(-162.45, 314.42, -312.46),
+            Vector3.new(-258.24, 327.90, -296.92),
+            {pos = Vector3.new(-499.07, 327.58, -295.80), delay = 3},
+            {pos = Vector3.new(-501.83, 327.58, -300.09), walk = true},
+            {pos = Vector3.new(-501.60, 327.58, -293.02), walk = true},
+            Vector3.new(-583.49, 335.07, -291.67),
+            Vector3.new(-627.44, 338.08, -296.46),
+            Vector3.new(-766.91, 338.08, -315.07),
+            Vector3.new(-808.60, 338.72, -315.73),
+            Vector3.new(-1087.08, 357.30, -321.73),
+            Vector3.new(-1200.46, 338.08, -374.24),
+            Vector3.new(-1226.97, 338.08, -406.46),
+            {pos = Vector3.new(-1302.43, 337.01, -476.15), delay = 3},
+            {pos = Vector3.new(-1303.84, 337.02, -481.69), walk = true},
+            {pos = Vector3.new(-1303.06, 337.02, -472.42), walk = true},
+            Vector3.new(-1383.62, 341.80, -520.30),
+            Vector3.new(-1409.28, 359.20, -534.47),
+            Vector3.new(-1447.36, 382.32, -575.09),
+            Vector3.new(-1478.99, 385.73, -573.14),
+            Vector3.new(-1510.38, 404.86, -550.84),
+            Vector3.new(-1579.18, 404.63, -628.56),
+            Vector3.new(-1603.91, 420.90, -708.19),
+            Vector3.new(-1561.08, 456.36, -764.88),
+            Vector3.new(-1506.81, 466.22, -762.20),
+            Vector3.new(-1437.55, 486.70, -822.21),
+            Vector3.new(-1402.09, 508.02, -805.58),
+            Vector3.new(-1398.28, 529.40, -737.78),
+            Vector3.new(-1407.40, 511.07, -652.13),
+            Vector3.new(-1407.60, 512.34, -606.97),
+            Vector3.new(-1305.14, 508.67, -557.19),
+            Vector3.new(-1268.98, 534.34, -577.20),
+            Vector3.new(-1216.76, 545.81, -650.17),
+            Vector3.new(-1206.00, 553.62, -687.18),
+            {pos = Vector3.new(-1052.01, 575.40, -819.93), delay = 3},
+            {pos = Vector3.new(-1052.14, 575.40, -812.71), walk = true},
+            {pos = Vector3.new(-1049.11, 575.40, -822.44), walk = true},
+            Vector3.new(-963.61, 580.31, -808.70),
+            Vector3.new(-944.29, 578.57, -803.90),
+            Vector3.new(-937.31, 629.03, -803.63),
+            Vector3.new(-918.90, 682.83, -777.40),
+            Vector3.new(-875.47, 692.73, -699.08),
+            Vector3.new(-801.37, 707.10, -675.52),
+            Vector3.new(-816.25, 708.61, -725.38),
+            Vector3.new(-804.84, 707.37, -745.40),
+            Vector3.new(-793.26, 747.18, -743.19),
+            Vector3.new(-764.02, 800.95, -766.11),
+            {pos = Vector3.new(-660.70, 821.77, -751.03), delay = 3},
+            {pos = Vector3.new(-661.62, 821.77, -741.90), walk = true},
+            {pos = Vector3.new(-656.15, 821.77, -753.65), walk = true},
+            Vector3.new(-539.87, 825.25, -747.38),
+            Vector3.new(-378.99, 841.64, -848.34),
+            Vector3.new(-324.46, 834.94, -883.95),
+            Vector3.new(-185.77, 829.66, -931.76),
+            Vector3.new(-41.39, 801.94, -1041.49),
+            Vector3.new(35.90, 831.72, -1003.14),
+            Vector3.new(49.41, 833.01, -993.34),
+            Vector3.new(58.16, 889.41, -877.46),
+            Vector3.new(121.91, 899.76, -722.75),
+            Vector3.new(145.48, 890.06, -597.26),
+            Vector3.new(144.73, 889.31, -579.31),
+            Vector3.new(-6.49, 898.12, -403.79),
+            Vector3.new(-246.12, 889.28, -211.55),
+            Vector3.new(-325.76, 889.11, -280.82),
+            Vector3.new(-415.77, 843.92, -171.02),
+            Vector3.new(-450.03, 822.16, -179.11),
+        }
+    },
+    -- Tambah obby lain di sini nanti
+    ["Sciences"] = {
         TOTAL_TIME = 250,
         SPAWN_Y = 191.12,
         LEADERBOARD = {path = {"ROTARYUgc11", "RootPart", "ClaimPrompt"}, type = "ProximityPrompt"},
