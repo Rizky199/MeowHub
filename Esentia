@@ -1,0 +1,343 @@
+-- ========= Services & Locals =========
+local Players        = game:GetService("Players")
+local RunService     = game:GetService("RunService")
+local UserInputService= game:GetService("UserInputService")
+
+local plr  = Players.LocalPlayer
+local pgui = plr:WaitForChild("PlayerGui")
+
+-- ========= GUI Builder =========
+local function buildGui()
+    local sg = Instance.new("ScreenGui")
+    sg.Name = "TycoonNextButtonGUI"
+    sg.ResetOnSpawn = false
+    sg.IgnoreGuiInset = true
+    sg.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    sg.Parent = pgui
+
+    local frame = Instance.new("Frame")
+    frame.Name = "Main"
+    frame.Size = UDim2.fromOffset(300, 140)
+    frame.Position = UDim2.fromScale(0.08, 0.35)
+    frame.BackgroundColor3 = Color3.fromRGB(45, 48, 55)
+    frame.BorderSizePixel = 0
+    frame.Parent = sg
+
+    local corner = Instance.new("UICorner", frame)
+    corner.CornerRadius = UDim.new(0, 12)
+
+    local stroke = Instance.new("UIStroke", frame)
+    stroke.Thickness = 1
+    stroke.Color = Color3.fromRGB(65, 70, 80)
+
+    local header = Instance.new("Frame")
+    header.Name = "Header"
+    header.Size = UDim2.new(1, 0, 0, 34)
+    header.BackgroundColor3 = Color3.fromRGB(35, 37, 44)
+    header.BorderSizePixel = 0
+    header.Parent = frame
+    Instance.new("UICorner", header).CornerRadius = UDim.new(0, 12)
+
+    local title = Instance.new("TextLabel")
+    title.Name = "Title"
+    title.BackgroundTransparency = 1
+    title.Size = UDim2.new(1, -105, 1, 0)
+    title.Position = UDim2.fromOffset(12, 0)
+    title.Font = Enum.Font.GothamBold
+    title.TextSize = 14
+    title.TextColor3 = Color3.fromRGB(230,235,245)
+    title.TextXAlignment = Enum.TextXAlignment.Left
+    title.Text = "Next Affordable Teleport"
+    title.Parent = header
+
+    -- Minimize Button (kotak kecil / underscore)
+    local minimize = Instance.new("TextButton")
+    minimize.Name = "Minimize"
+    minimize.AutoButtonColor = true
+    minimize.BackgroundTransparency = 1
+    minimize.Size = UDim2.fromOffset(34, 34)
+    minimize.Position = UDim2.new(1, -72, 0, 0)
+    minimize.Font = Enum.Font.GothamBold
+    minimize.TextSize = 18
+    minimize.TextColor3 = Color3.fromRGB(230,235,245)
+    minimize.Text = "─"
+    minimize.Parent = header
+
+    local close = Instance.new("TextButton")
+    close.Name = "Close"
+    close.AutoButtonColor = true
+    close.BackgroundTransparency = 1
+    close.Size = UDim2.fromOffset(34, 34)
+    close.Position = UDim2.new(1, -36, 0, 0)
+    close.Font = Enum.Font.GothamBold
+    close.TextSize = 16
+    close.TextColor3 = Color3.fromRGB(230,235,245)
+    close.Text = "✕"
+    close.Parent = header
+
+    local body = Instance.new("Frame")
+    body.Name = "Body"
+    body.BackgroundTransparency = 1
+    body.Size = UDim2.new(1, -24, 1, -50)
+    body.Position = UDim2.fromOffset(12, 42)
+    body.Parent = frame
+
+    local info1 = Instance.new("TextLabel")
+    info1.Name = "TycoonInfo"
+    info1.BackgroundTransparency = 1
+    info1.Size = UDim2.new(1, 0, 0, 20)
+    info1.Font = Enum.Font.Gotham
+    info1.TextSize = 13
+    info1.TextColor3 = Color3.fromRGB(210,215,225)
+    info1.TextXAlignment = Enum.TextXAlignment.Left
+    info1.Text = "Tycoon: -"
+    info1.Parent = body
+
+    local info2 = Instance.new("TextLabel")
+    info2.Name = "TargetInfo"
+    info2.BackgroundTransparency = 1
+    info2.Position = UDim2.fromOffset(0, 22)
+    info2.Size = UDim2.new(1, 0, 0, 20)
+    info2.Font = Enum.Font.Gotham
+    info2.TextSize = 13
+    info2.TextColor3 = Color3.fromRGB(210,215,225)
+    info2.TextXAlignment = Enum.TextXAlignment.Left
+    info2.Text = "Target: -"
+    info2.Parent = body
+
+    local info3 = Instance.new("TextLabel")
+    info3.Name = "StatusInfo"
+    info3.BackgroundTransparency = 1
+    info3.Position = UDim2.fromOffset(0, 44)
+    info3.Size = UDim2.new(1, 0, 0, 20)
+    info3.Font = Enum.Font.Gotham
+    info3.TextSize = 13
+    info3.TextColor3 = Color3.fromRGB(180,185,200)
+    info3.TextXAlignment = Enum.TextXAlignment.Left
+    info3.Text = "Status: idle"
+    info3.Parent = body
+
+    local toggle = Instance.new("TextButton")
+    toggle.Name = "Toggle"
+    toggle.AutoButtonColor = true
+    toggle.Size = UDim2.fromOffset(120, 34)
+    toggle.Position = UDim2.new(0, 0, 1, -40)
+    toggle.BackgroundColor3 = Color3.fromRGB(60, 170, 95)
+    toggle.TextColor3 = Color3.fromRGB(255,255,255)
+    toggle.Font = Enum.Font.GothamBold
+    toggle.TextSize = 14
+    toggle.Text = "OFF"
+    toggle.Parent = body
+    Instance.new("UICorner", toggle).CornerRadius = UDim.new(0, 10)
+
+    -- ========= Minimize Logic =========
+    local isMinimized = false
+    local fullSize = UDim2.fromOffset(300, 140)
+    local miniSize = UDim2.fromOffset(300, 34) -- hanya header (jadi "kotak")
+
+    minimize.MouseButton1Click:Connect(function()
+        isMinimized = not isMinimized
+        if isMinimized then
+            body.Visible = false
+            frame.Size = miniSize
+            minimize.Text = "□" -- ikon restore
+        else
+            body.Visible = true
+            frame.Size = fullSize
+            minimize.Text = "─" -- ikon minimize
+        end
+    end)
+
+    -- Dragging
+    local dragging = false
+    local dragStart, startPos
+    header.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = true
+            dragStart = input.Position
+            startPos = frame.Position
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then dragging = false end
+            end)
+        end
+    end)
+    UserInputService.InputChanged:Connect(function(input)
+        if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+            local delta = input.Position - dragStart
+            frame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+        end
+    end)
+
+    return sg, frame, toggle, close, info1, info2, info3
+end
+
+-- ========= Helpers =========
+local function getCharacter()
+    local char = plr.Character or plr.CharacterAdded:Wait()
+    local hrp = char:WaitForChild("HumanoidRootPart", 5)
+    local hum = char:FindFirstChildOfClass("Humanoid")
+    return char, hrp, hum
+end
+
+local function resolveTycoonName(val:any): string?
+    if not val then return nil end
+    local t = typeof(val)
+    if t == "string" then
+        if val ~= "" then return val end
+    elseif t == "number" then
+        return ("Tycoon%d"):format(val)
+    elseif t == "Instance" then
+        return val.Name
+    end
+    return nil
+end
+
+local function getTycoonModel()
+    local td = plr:FindFirstChild("TycoonData")
+    if not td then return nil, nil end
+    local tVal = td:FindFirstChild("Tycoon")
+    if not tVal then return nil, nil end
+    local name = resolveTycoonName(tVal.Value)
+    if not name then return nil, nil end
+    local model = workspace:FindFirstChild(name)
+    return model, name
+end
+
+local function firstBasePart(inst: Instance?): BasePart?
+    if not inst then return nil end
+    if inst:IsA("BasePart") then return inst end
+    if inst:IsA("Model") then
+        if inst.PrimaryPart then return inst.PrimaryPart end
+        for _,d in ipairs(inst:GetDescendants()) do
+            if d:IsA("BasePart") then return d end
+        end
+        return nil
+    end
+    local anc = inst:FindFirstAncestorOfClass("Model") or inst:FindFirstAncestorOfClass("BasePart")
+    if anc then return firstBasePart(anc) end
+    if inst:IsA("Folder") then
+        for _,d in ipairs(inst:GetDescendants()) do
+            if d:IsA("BasePart") then return d end
+        end
+    end
+    return nil
+end
+
+local function computeTeleportCFrame(targetInst: Instance): CFrame?
+    local bp = firstBasePart(targetInst)
+    if not bp then return nil end
+    local base = bp.CFrame
+    local offset = base.LookVector * -2 + Vector3.new(0, 3, 0)
+    return CFrame.new((base.Position + offset), base.Position)
+end
+
+local function pivotTo(char: Model, cf: CFrame)
+    if not char then return end
+    pcall(function()
+        char:PivotTo(cf)
+    end)
+end
+
+-- ========= Main Runner =========
+local gui, frame, btnToggle, btnClose, lblTycoon, lblTarget, lblStatus = buildGui()
+
+local state = {
+    enabled = false,
+    lastTargetRef = nil,
+    lastTargetTime = 0,
+    lastTeleportTime = 0,
+}
+
+local function setEnabled(on:boolean)
+    state.enabled = on
+    btnToggle.Text = on and "ON" or "OFF"
+    btnToggle.BackgroundColor3 = on and Color3.fromRGB(60,170,95) or Color3.fromRGB(95, 100, 110)
+    lblStatus.Text = on and "Status: running" or "Status: idle"
+end
+
+btnToggle.MouseButton1Click:Connect(function()
+    setEnabled(not state.enabled)
+end)
+
+btnClose.MouseButton1Click:Connect(function()
+    state.enabled = false
+    if gui then gui:Destroy() end
+end)
+
+task.spawn(function()
+    while gui and gui.Parent do
+        local model, name = getTycoonModel()
+        lblTycoon.Text = "Tycoon: " .. (name or "-")
+        task.wait(0.5)
+    end
+end)
+
+local function getNextAffordableTarget(): Instance?
+    local td = plr:FindFirstChild("TycoonData")
+    if not td then return nil end
+    local v = td:FindFirstChild("NextAffordableButton")
+    if not v then return nil end
+    local val = v.Value
+    if typeof(val) == "Instance" and val and val.Parent then
+        return val
+    end
+    return nil
+end
+
+task.spawn(function()
+    local td = plr:WaitForChild("TycoonData", 10)
+    local nav = td and td:FindFirstChild("NextAffordableButton")
+    if nav and nav:IsA("ObjectValue") then
+        nav:GetPropertyChangedSignal("Value"):Connect(function()
+            state.lastTargetRef = nav.Value
+            state.lastTargetTime = os.clock()
+        end)
+        state.lastTargetRef = nav.Value
+        state.lastTargetTime = os.clock()
+    end
+end)
+
+task.spawn(function()
+    local char, hrp = getCharacter()
+    while gui and gui.Parent do
+        if state.enabled then
+            if not char or not char.Parent or not hrp or not hrp.Parent then
+                char, hrp = getCharacter()
+            end
+
+            local target = getNextAffordableTarget()
+            lblTarget.Text = "Target: " .. (target and target:GetFullName() or "-")
+
+            local now = os.clock()
+            local shouldTeleport = false
+
+            if target then
+                if target ~= state.lastTargetRef then
+                    state.lastTargetRef = target
+                    state.lastTargetTime = now
+                    shouldTeleport = true
+                else
+                    if (now - (state.lastTeleportTime or 0)) >= 1.0 and (now - (state.lastTargetTime or 0)) >= 2.0 then
+                        shouldTeleport = true
+                    end
+                end
+            end
+
+            if shouldTeleport and target then
+                local cf = computeTeleportCFrame(target)
+                if cf then
+                    lblStatus.Text = "Status: teleporting..."
+                    pivotTo(char, cf)
+                    state.lastTeleportTime = now
+                    lblStatus.Text = "Status: teleported"
+                else
+                    lblStatus.Text = "Status: target has no BasePart"
+                end
+            end
+        end
+
+        RunService.Heartbeat:Wait()
+    end
+end)
+
+setEnabled(false)
