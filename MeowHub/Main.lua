@@ -50,6 +50,11 @@ local GameList = {
         base = "https://raw.githubusercontent.com/Rizky199/MeowHub/main/Evomon/",
         file = "Main_Evomon.lua",
     },
+    [6268048170] = {
+        name = "Kingdom Of Essentia Tycoon",
+        base = "https://raw.githubusercontent.com/Rizky199/MeowHub/main/Kingdom_Of_Essentia_Tycoon/",
+        file = "Main_Essentia.lua",
+    },
 }
 
 -- ============================================================
