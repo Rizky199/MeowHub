@@ -55,19 +55,9 @@ function _G.TVG.Soul.HandleSoul()
 			local suster = getSusterFolder()
 			if suster then
 				State.soulHandled = true
-				local root = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-				local part = suster:IsA("BasePart") and suster or suster:FindFirstChildWhichIsA("BasePart", true)
-				if root and part then
-					root.CFrame = CFrame.new(part.Position + Vector3.new(0, 3, 0))
-					print("[Suster] Teleport ke Suster")
-				end
-				task.wait(0.3)
-				local prompt = suster:FindFirstChildOfClass("ProximityPrompt")
-					or (part and part:FindFirstChildOfClass("ProximityPrompt"))
-				if prompt then
-					fireproximityprompt(prompt)
-					print("[Suster] ProximityPrompt diklik")
-				end
+				-- Sementara nonaktif: tidak teleport & tidak fire ProximityPrompt ke Suster,
+				-- cukup ditandai "handled" supaya tidak spam tiap detik.
+				print("[Suster] Terdeteksi, tapi auto teleport/fire dinonaktifkan sementara")
 			end
 		end)
 		if not ok then warn("[Suster] error: " .. tostring(err)) end
