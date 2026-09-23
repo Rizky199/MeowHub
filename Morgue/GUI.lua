@@ -128,7 +128,7 @@ SoulFrame.Parent = MainFrame
 Instance.new("UICorner", SoulFrame).CornerRadius = UDim.new(0, 8)
 
 local SoulSubLabel = Instance.new("TextLabel")
-SoulSubLabel.Text = "JUMPSCARE SOUL"
+SoulSubLabel.Text = "SUSTER"
 SoulSubLabel.Size = UDim2.new(1, -12, 0, 16)
 SoulSubLabel.Position = UDim2.new(0, 10, 0, 5)
 SoulSubLabel.BackgroundTransparency = 1
